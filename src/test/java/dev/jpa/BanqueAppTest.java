@@ -102,6 +102,49 @@ public class BanqueAppTest {
 
 	}
 
+	// Test de la persistance de l'héritage avec une table par classe
+	@Test
+	public void test_table_per_subclass() {
+
+		// Création d'une assurance vie
+		AssuranceVie assurance = new AssuranceVie();
+		assurance.setTaux(1.75);
+		assurance.setDateFin(LocalDate.of(2050, 7, 8));
+		assurance.setNumero(600);
+		assurance.setSolde(50.30);
+
+		// Création d'un livret A
+		LivretA livret = new LivretA();
+		livret.setTaux(2.50);
+		livret.setNumero(500);
+		livret.setSolde(600.50);
+
+		// Transaction
+		EntityTransaction tx = this.em.getTransaction();
+		tx.begin();
+		this.em.persist(assurance);
+		this.em.persist(livret);
+		tx.commit();
+	}
+
+	// Test de la persistance de l'héritage avec une table par classe
+	@Test
+	public void test_single_table() {
+
+		// Création d'un virement
+		Virement virement = new Virement();
+		virement.setBeneficiaire("Triple H");
+		virement.setDate(LocalDateTime.now());
+		virement.setMontant(100_000.00);
+		virement.setMotif("Paie de Stéphanie McMahon");
+
+		// Transaction
+		EntityTransaction tx = this.em.getTransaction();
+		tx.begin();
+		this.em.persist(virement);
+		tx.commit();
+	}
+
 	// FIN DE SESSION
 	@After
 	public void tearDown() {

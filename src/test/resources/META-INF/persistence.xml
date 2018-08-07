@@ -16,6 +16,9 @@
 		<class>dev.jpa.Client</class>
 		<class>dev.jpa.Compte</class>
 		<class>dev.jpa.Operation</class>
+		<class>dev.jpa.LivretA</class>
+		<class>dev.jpa.AssuranceVie</class>
+		<class>dev.jpa.Virement</class>
 
 		<properties>
 			<!-- Informations de connexion à la base de données -->
