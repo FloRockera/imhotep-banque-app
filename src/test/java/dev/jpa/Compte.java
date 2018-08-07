@@ -1,7 +1,6 @@
 package dev.jpa;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,11 +16,7 @@ import javax.persistence.Table;
 public class Compte {
 
 	@OneToMany(mappedBy = "compte")
-	private Set<Operation> operations;
-
-	public Compte() {
-		operations = new HashSet<Operation>();
-	}
+	private List<Operation> operations;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,9 +53,17 @@ public class Compte {
 		this.solde = solde;
 	}
 
+	public List<Operation> getOperations() {
+		return operations;
+	}
+
+	public void setOperations(List<Operation> operations) {
+		this.operations = operations;
+	}
+
 	@Override
 	public String toString() {
-		return "Compte [id=" + id + ", numero=" + numero + ", solde=" + solde + "]";
+		return "Compte [operations=" + operations + ", id=" + id + ", numero=" + numero + ", solde=" + solde + "]";
 	}
 
 }

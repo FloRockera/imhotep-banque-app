@@ -1,7 +1,6 @@
 package dev.jpa;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -26,8 +25,8 @@ public class Client {
 	private Banque banque;
 
 	@ManyToMany
-	@JoinTable(name = "compte", joinColumns = @JoinColumn(name = "ID_CLI", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ID_CPT", referencedColumnName = "ID"))
-	private List<Compte> comptes = new ArrayList<>();
+	@JoinTable(name = "tablejointure", joinColumns = @JoinColumn(name = "ID_CLI", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ID_CPT", referencedColumnName = "ID"))
+	private List<Compte> comptes;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -78,9 +77,34 @@ public class Client {
 		this.dateNaissance = dateNaissance;
 	}
 
+	public Banque getBanque() {
+		return banque;
+	}
+
+	public void setBanque(Banque banque) {
+		this.banque = banque;
+	}
+
+	public List<Compte> getComptes() {
+		return comptes;
+	}
+
+	public void setComptes(List<Compte> comptes) {
+		this.comptes = comptes;
+	}
+
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+
 	@Override
 	public String toString() {
-		return "Client [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance + "]";
+		return "Client [banque=" + banque + ", comptes=" + comptes + ", id=" + id + ", adresse=" + adresse + ", nom="
+				+ nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance + "]";
 	}
 
 }

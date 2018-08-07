@@ -47,7 +47,7 @@ public class BanqueAppTest {
 	// utilisant l’EntityManager
 
 	@Test
-	public void inserer_donnees_detachees() {
+	public void inserer_donnees() {
 
 		// Création des variables
 		Banque nvelleBanque = new Banque();
@@ -57,9 +57,9 @@ public class BanqueAppTest {
 		Adresse nvelleAdresse = new Adresse();
 
 		ArrayList<Operation> operations = new ArrayList<Operation>();
-		ArrayList<Client> clients = new ArrayList<Client>();
+		ArrayList<Compte> comptes = new ArrayList<Compte>();
 
-		clients.add(nveauClient);
+		comptes.add(nveauCompte);
 		operations.add(nvelleOpe);
 
 		// Insertion de données
@@ -70,15 +70,20 @@ public class BanqueAppTest {
 		nveauClient.setNom("Dudule");
 		nveauClient.setPrenom("Martine");
 		nveauClient.setDateNaissance(LocalDate.of(1980, 4, 3));
+		nveauClient.setComptes(comptes);
+		nveauClient.setBanque(nvelleBanque);
+		nveauClient.setAdresse(nvelleAdresse);
 
 		// Compte
 		nveauCompte.setNumero(400);
 		nveauCompte.setSolde(2000.00);
+		nveauCompte.setOperations(operations);
 
 		// Opération
 		nvelleOpe.setDate(LocalDateTime.now());
 		nvelleOpe.setMontant(12.50);
 		nvelleOpe.setMotif("Virement 1");
+		nvelleOpe.setCompte(nveauCompte);
 
 		// Adresse
 		nvelleAdresse.setCodePostal(53000);

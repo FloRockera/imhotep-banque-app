@@ -66,9 +66,18 @@ public class Operation {
 		this.motif = motif;
 	}
 
+	public Compte getCompte() {
+		return compte;
+	}
+
+	public void setCompte(Compte compte) {
+		this.compte = compte;
+	}
+
 	@Override
 	public String toString() {
-		return "Operation [id=" + id + ", date=" + date + ", montant=" + montant + ", motif=" + motif + "]";
+		return "Operation [compte=" + compte + ", id=" + id + ", date=" + date + ", montant=" + montant + ", motif="
+				+ motif + "]";
 	}
 
 }
